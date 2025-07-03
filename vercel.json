@@ -1,28 +1,22 @@
 {
   "version": 2,
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm run build",
   "builds": [
     {
-      "src": "demos/ecommerce_shop/frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
-    },
-    {
       "src": "demos/ecommerce_shop/backend/server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "demos/ecommerce_shop/frontend/build/**"
+        ]
+      }
     }
   ],
   "routes": [
     {
-      "src": "/oauth/(.*)",
-      "dest": "/demos/ecommerce_shop/backend/server.js"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/demos/ecommerce_shop/backend/server.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/demos/ecommerce_shop/frontend/$1"
+      "dest": "demos/ecommerce_shop/backend/server.js"
     }
   ]
 }
