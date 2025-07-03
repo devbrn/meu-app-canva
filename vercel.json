@@ -1,20 +1,28 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "demos/ecommerce_shop/backend/server.js",
-        "use": "@vercel/node",
-        "config": {
-          "includeFiles": [
-            "../frontend/build/**"
-          ]
-        }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "demos/ecommerce_shop/backend/server.js"
-      }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "demos/ecommerce_shop/frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    },
+    {
+      "src": "demos/ecommerce_shop/backend/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/oauth/(.*)",
+      "dest": "/demos/ecommerce_shop/backend/server.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/demos/ecommerce_shop/backend/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/demos/ecommerce_shop/frontend/$1"
+    }
+  ]
+}
