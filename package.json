@@ -28,3 +28,4 @@
     "build": "npm run build --workspace=demos/ecommerce_shop/frontend"
   }
 }
+ 
