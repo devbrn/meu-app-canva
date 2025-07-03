@@ -4,6 +4,9 @@
   "author": "Canva Pty Ltd.",
   "license": "SEE LICENSE IN LICENSE.md",
   "private": true,
+  "overrides": {
+    "ajv": "^6.12.6"
+  },
   "workspaces": [
     "demos/common",
     "demos/ecommerce_shop",
