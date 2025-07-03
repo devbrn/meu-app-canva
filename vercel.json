@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "installCommand": "npm install --legacy-peer-deps",
+  "buildCommand": "npm run build",
+  "builds": [
+    {
+      "src": "demos/ecommerce_shop/backend/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "demos/ecommerce_shop/frontend/build/**"
+        ]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "demos/ecommerce_shop/backend/server.js"
+    }
+  ]
+}
