@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "demos/ecommerce_shop/backend/server.js",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": [
+            "../frontend/build/**"
+          ]
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "demos/ecommerce_shop/backend/server.js"
+      }
+    ]
+  }
